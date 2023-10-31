@@ -1,0 +1,38 @@
+section {
+    width: 80%;
+    margin: auto;
+    min-height: 80rem;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    text-transform: capitalize;
+}
+
+.card-link {
+    text-decoration: none;
+    color: #151515;
+}
+
+.page-title {
+    margin: 1.5rem auto;
+    text-transform: capitalize;
+}
+
+.card-time {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+}
+
+.card-option {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.modal-content {
+    margin-top: 5rem;
+}

@@ -1,0 +1,40 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+    <section>
+        <h1 class="page-title">Todos</h1>
+        {% if todolist %}
+            <div class="container">
+                <div class="row">
+                    {% for todo in todolist %}
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="{% url 'todos:todo' todo.id %}" class="card-link">
+                                        <h2 class="card-title">{{ todo.name }}</h2>
+                                    </a>
+                                    <p class="card-time">Created on {{ todo.createdat }}</p>
+                                    <p class="card-text"> {{ todo.description }}</p>
+                                    <div class="card-option">
+                                        <form action="{% url 'todos:update' todo.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-success">Complete</button>
+                                        </form>
+                                        <form action="{% url 'todos:delete' todo.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% else %}
+            <p>You don't have Todos available.</p>
+            <Button>Add New</Button>
+        {% endif %}
+    </section>
+{% endblock %}
