@@ -14,15 +14,33 @@
                                         <h2 class="card-title">{{ todo.name }}</h2>
                                     </a>
                                     <p class="card-time">Created on {{ todo.createdat }}</p>
+                                    <p class="card-priority">Priority: {{ todo.priority }}</p>
                                     <p class="card-text"> {{ todo.description }}</p>
                                     <div class="card-option">
-                                        <form action="{% url 'todos:update' todo.id %}" method="post">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-success">Complete</button>
-                                        </form>
+                                        {% if not todo.status %}
+
+                                            <form action="{% url 'todos:update' todo.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-success">Complete</button>
+                                            </form>
+                                            <button type="button" class="btn btn-info"
+                                                    onclick="edit_todo(['{{ todo.name }}',
+                                                            '{{ todo.priority }}', '{{ todo.description }}', '{{ todo.id }}'])">
+                                                Edit
+                                            </button>
+                                        {% else %}
+                                            <p>Completed</p>
+                                            <button type="button" class="btn btn-warning"
+                                                    onclick="replicate_todo(['{{ todo.name }}',
+                                                            '{{ todo.priority }}', '{{ todo.description }}'])">
+                                                Replicate
+                                            </button>
+                                        {% endif %}
                                         <form action="{% url 'todos:delete' todo.id %}" method="post">
                                             {% csrf_token %}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"
+                                                    onclick="delete_todo()">Delete
+                                            </button>
                                         </form>
                                     </div>
                                 </div>

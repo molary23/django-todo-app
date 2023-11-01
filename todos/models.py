@@ -12,6 +12,6 @@ class Todo(models.Model):
     description = models.TextField()
     createdat = models.DateTimeField(auto_now_add=True)
     updatedat = models.DateTimeField(null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    REQUIRED_FIELDS = [name, status, priority, createdat, user]
+    REQUIRED_FIELDS = [name, status, priority, createdat]
