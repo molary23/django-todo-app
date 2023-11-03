@@ -28,6 +28,32 @@ section {
     margin-bottom: 0.75rem;
 }
 
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.material-icons {
+    font-size: 2rem;
+}
+
+.priority_high, .btn_delete {
+    color: red;
+
+}
+
+.priority_medium, .btn_replicate {
+    color: #ffb500;
+
+}
+
+.priority_low, .btn_edit {
+    color: dodgerblue;
+}
+
 .card-option {
     display: flex;
     gap: 0.5rem;
@@ -35,4 +61,26 @@ section {
 
 .modal-content {
     margin-top: 5rem;
+}
+
+.login__section {
+    display: grid;
+    place-items: center;
+}
+
+#loginForm {
+    width: 20rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: .2rem;
+}
+
+#loginForm input {
+    margin-bottom: 1rem;
+    width: 100%;
+
+}
+
+.card-description {
+    min-height: 20rem;
 }

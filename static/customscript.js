@@ -37,10 +37,6 @@ const edit_todo = (todo) => {
     modal.style.display = 'block'
 }
 
-const delete_todo = (id) => {
-    return confirm('Are you sure you want to create a new Todo that is similar to this one?')
-
-}
 const closeModal = () => {
     const modal = document.getElementById('myModal')
     modal.style.display = 'none'

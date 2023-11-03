@@ -1,10 +1,13 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path
 
 from . import views
 
 app_name = "todos"
+
 urlpatterns = [
-    path("", views.IndexView.as_view(), name="index"),
+    path("", login_required(views.IndexView.as_view(), login_url="/accounts/login", redirect_field_name="next"),
+         name="index"),
     path("add", views.add, name="add"),
     path("<int:pk>/", views.DetailView.as_view(), name="todo"),
     path("<int:todo_id>/update/", views.update, name="update"),

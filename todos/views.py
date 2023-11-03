@@ -14,7 +14,7 @@ class IndexView(generic.ListView):
     context_object_name = 'todolist'
 
     def get_queryset(self):
-        return Todo.objects.order_by('status', '-priority', '-createdat')
+        return Todo.objects.filter(user_id=self.request.user.id).order_by('status', '-priority', '-createdat')
 
 
 class DetailView(generic.DetailView):
@@ -26,7 +26,8 @@ def add(request):
     name = request.POST.get('name')
     description = request.POST.get('description')
     priority = request.POST.get('priority')
-    Todo.objects.create(name=name, description=description, priority=priority)
+    user_id = request.user.id
+    Todo.objects.create(name=name, description=description, priority=priority, user_id=user_id)
     return HttpResponseRedirect(reverse("todos:index"))
 
 
